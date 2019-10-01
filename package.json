@@ -1,0 +1,25 @@
+{
+    "name": "heroku-mqtt-sample",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maryann348/heroku-mqtt-sample.git"
+    },
+    "author": "MaryAnn Camay",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/maryann348/heroku-mqtt-sample/issues"
+    },
+    "homepage": "https://github.com/maryann348/heroku-mqtt-sample#readme",
+    "engines": {
+        "node": "10.15"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
