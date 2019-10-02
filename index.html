@@ -6,13 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mqtt</title>
-    <link rel="stylesheet" href="index.css">
+    <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
+<style>
+    html body {
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1447014886653-534c5b8b85c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    h2 {
+        color: black;
+        font-weight: bold;
+        background-color: white;
+    }
+    
+    .card {
+        height: 330px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .form-control {
+        border-width: 5px;
+        border-style: groove;
+    }
+    
+    #Status {
+        color: red;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    
+    button {
+        border-width: 2px;
+        border-style: ridge;
+    }
+    
+    h4 {
+        color: black;
+        text-align: center;
+        margin-left: 40%;
+        margin-right: 46%;
+        font-weight: bold;
+    }
+    
+    h2 {
+        font-family: fantasy;
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    .table {
+        overflow-y: auto;
+        height: 200px;
+        background-color: white;
+    }
+    
+    table th {
+        position: sticky;
+        top: 0;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td,
+    tr {
+        padding: 8px 16px;
+        border: 2px solid black;
+    }
+    
+    th {
+        border: 2px solid black;
+        color: black;
+        text-align: center;
+    }
+    
+    #Btn_UnSub:hover,
+    .Btn_disConnect:hover {
+        background-color: red;
+        color: white;
+    }
+    
+    #Btn_Pub:hover,
+    #Btn_Sub:hover,
+    #Btn_connect:hover {
+        background-color: green;
+        color: white;
+    }
+    
+    #Btn_connect:hover {
+        background-color: green;
+        ;
+        color: white;
+    }
+</style>
+
 
 <body>
     <h2>MQTT Website</h2>
