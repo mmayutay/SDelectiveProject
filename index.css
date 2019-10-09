@@ -84,12 +84,12 @@ th {
 
 #Btn_Pub:hover,
 #Btn_Sub:hover,
-#Btn_connect:hover {
+.Btn_Connect:hover {
     background-color: green;
     color: white;
 }
 
-#Btn_connect:hover {
+.Btn_Connect:hover {
     background-color: green;
     ;
     color: white;
