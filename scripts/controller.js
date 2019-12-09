@@ -1,29 +1,39 @@
-// basic functionalities
 var client;
 
-// var btnPublish = $("#Btn-Publish")
+var endTime;
+var startTime;
 
 
 client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt")
-client.on("connect", function() {
+client.on("connect", function () {
     console.log("connected");
-    $(".Btn_Connect").on('click', function() {
-        $("#Status").text("The device is currently turned On")
-        $("#Status").css("color", "green")
-        var topic = "maryann/device/status";
-        var message = "TurnOn : " + moment().format('MMMM Do YYYY, h:mm:ss a');
-        client.publish(topic, message);
-        console.log("On")
-            // console.log(" " + topic + " " + message);
 
-    });
+});
 
-    $(".Btn_disConnect").click(function() {
-        $("#Status").text("The device is currently turned Off")
-        $("#Status").css("color", "red")
-        var topic = "maryann/device/status";
-        var message = "TurnOff : " + moment().format('MMMM Do YYYY, h:mm:ss a');
-        client.publish(topic, message);
-        console.log("Off");
-    })
+var topic = "toWeb";
+client.subscribe(topic);
+client.on("message", function (topic, payload) {
+    var today = new Date();
+    console.log(topic + " " + String(payload));
+    var count = 0
+    if (String(payload) == "waterise") {
+        count++;
+        $("#value").text(count)
+        startTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":";
+        console.log("startTime: " + startTime);
+
+        $("#message").text("Sprinkler is currently Off");
+        $("#message").css("color", "green")
+    } else {
+        endTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        console.log("endTime: " + endTime);
+
+        $("#message").text("Sprinkler is currently On");
+        $("#message").css("color", "red")
+    }
+
+
+    $("#time").text(startTime);
+
+
 })

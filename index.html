@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <title>Mqtt</title>
     <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -16,40 +17,56 @@
 <style>
     html body {
         height: 100%;
-        background-image: url("https://images.unsplash.com/photo-1447014886653-534c5b8b85c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80");
+        background-image: url("https://i.pinimg.com/originals/26/e7/b0/26e7b0be0588ec32fc9827c48c65359c.jpg");
         background-size: cover;
         background-attachment: fixed;
     }
-    
-    h2 {
-        color: black;
-        font-weight: bold;
-        background-color: white;
-    }
-    
+
     .card {
-        height: 330px;
-        background-color: black;
+        margin-top: 2%;
+        margin-left: 10%;
+        height: 500px;
+        background-color: rgba(192, 192, 192, 0.5);
         color: white;
         font-weight: bold;
+        width: 85%;
     }
-    
+
+    .forNotif {
+        margin-top: 2%;
+        margin-left: 5%;
+        height: 300px;
+        width: 10%;
+        background-color: #c6f7a3;
+        color: white;
+        font-weight: bold;
+        width: 10%;
+        margin-bottom: 5%;
+    }
+
     .form-control {
-        border-width: 5px;
+        border-width: 1px;
         border-style: groove;
     }
-    
+
     #Status {
-        color: red;
+        color: black;
         font-weight: bold;
-        font-size: 30px;
+        margin-top: 20%;
+        font-size: 350%;
     }
-    
+
+    .sprinkler {
+        font-weight: bold;
+        font-size: 40px;
+        color: black;
+    }
+
     button {
         border-width: 2px;
         border-style: ridge;
     }
-    
+
     h4 {
         color: black;
         text-align: center;
@@ -57,99 +74,161 @@
         margin-right: 46%;
         font-weight: bold;
     }
-    
-    h2 {
+
+    h1 {
         font-family: fantasy;
         text-align: center;
-        padding-top: 20px;
+        padding-top: 90px;
+        font-size: 70px;
     }
-    
-    .table {
-        overflow-y: auto;
-        height: 200px;
-        background-color: white;
-    }
-    
-    table th {
-        position: sticky;
-        top: 0;
-    }
-    
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    td,
-    tr {
-        padding: 8px 16px;
-        border: 2px solid black;
-    }
-    
-    th {
-        border: 2px solid black;
+
+    .notifications {
+        /* margin-right: 2%; */
         color: black;
+        /* height: 5%; */
+
+    }
+
+    .status {
+        margin-right: 2%;
+        color: black;
+        font-size: 200%;
+        font-weight: bold;
+        color: black
+    }
+
+    #myDIV {
+        width: 995px;
         text-align: center;
+        background-color: rgba(192, 192, 192, 0.5);
+        border-radius: 80px;
+        margin-left: 60px;
     }
-    
-    #Btn_UnSub:hover,
-    .Btn_disConnect:hover {
+
+    #sprinkler {
+        height: 10%;
+        width: 10%;
+    }
+
+    button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s;
+        /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-left: 40%;
+        margin-right: 40%;
+    }
+
+    #notif {
+        height: 5%;
+    }
+
+    .card {
+        border-radius: 8%;
+        margin: 0px;
+        margin-left: 80px;
+    }
+
+    .col {
+        padding: 0px;
+    }
+
+    header {
+        height: 300px;
+        background-color: rgba(77, 240, 60, 0.5);
+        font-weight: bold;
+    }
+
+    label {
+        font-size: 40px;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .notification {
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        padding: 15px 26px;
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+    }
+
+    .notification .badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        padding: 5px 10px;
+        border-radius: 50%;
         background-color: red;
-        color: white;
-    }
-    
-    #Btn_Pub:hover,
-    #Btn_Sub:hover,
-    .Btn_Connect:hover {
-        background-color: green;
-        color: white;
-    }
-    
-    .Btn_Connect:hover {
-        background-color: green;
-        ;
         color: white;
     }
 </style>
 
+<header>
+    <h1>Soil Moisture System</h1>
+</header>
+
 
 <body>
-    <h2>IoT Switch</h2>
     <div class="container">
         <br>
         <div class="row">
-            <div class="col">
+            <div class="col" class="sprinkler">
                 <div class="card">
                     <div class="container">
                         <center>
                             <div class="card-header">
-                                <div class="card-body">
-                                    <!-- <label for="input-broker-ws"> Address:</label> -->
-
-
-                                    <!-- <input type="text" class="form-control" id="input-broker-ws" value="wss://test.mosquitto.org:8081/mqtt"><br> -->
-
-                                    <button class="Btn_Connect">On</button>
-
-                                    <button class="Btn_disConnect">Off</button>
+                                <div class="status">
+                                    <label>Sprinkler Status</label>
+                                    <br>
                                 </div>
-                                <label for="status" id="Status">Status:</label>
-
-                                <!-- <center>
-                                    <p id="status"><b><i>Connected</i></b></p>
-                                </center> -->
-
-                                <!-- </div> -->
                             </div>
+                            <label for="status" id="message"></label>
                         </center>
-
-                        <!-- row1 -->
                     </div>
                 </div>
             </div>
+
+        </div>
+        <center>
+            <button class="notification" id="toggle">Show Notifications<span class="badge" id="value"></span></button>   
+        </center>
+        <div class="forNotif" id="myDIV">
+            <div class="container" id="notif">
+                <center>
+                    <div class="card-header">
+                        <div class="notifications">
+                            <label class="sprinkler">Notifications</label>
+                            <br>
+                        </div>
+                        <label for="status" id="time"></label>
+                </center>
+            </div>
         </div>
     </div>
-
+    <!-- </div> -->
+    <script>
+        $(document).ready(function () {
+            $('#myDIV').hide();
+            $('#toggle').click(function () {
+                $('#myDIV').toggle();
+            })
+        })
+    </script>
 
 
 
